@@ -1,4 +1,5 @@
 # gestion-utilisateur  
+___
 It's a small project to handle user management with Object Oriented **Python**.  
 
 ## Prerequisites  
@@ -10,8 +11,7 @@ It's a small project to handle user management with Object Oriented **Python**.
 - Pathlib
 - typing 
 
-## Features
-___
+## Features  
 
 - add one user in database  
 
