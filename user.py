@@ -22,7 +22,7 @@ class User:
     
     @property
     def db_instance(self):
-        return User.DB.get(where('first_name')==self.first_name and where('last_name') == self.last_name) #type:ignore
+        return User.DB.get(where('first_name') == self.first_name and where('last_name') == self.last_name) #type:ignore
         
     def _checks(self):
         self._check_phone_number()
@@ -32,7 +32,7 @@ class User:
     def _check_phone_number(self):
         phone_number = re.sub(r"[+()\s]","",self.phone_number)
         if len(phone_number) < 10 or not phone_number.isdigit():
-            raise ValueError("numero de téléphone non valide")
+            raise ValueError(f"numero de téléphone {self.phone_number} invalide")
 
     def _check_names(self):
         if not (self.first_name and self.last_name):
@@ -56,7 +56,7 @@ class User:
         if validate_data:
             self._checks()
         if self.exists():
-            return "l'utilisateur existe déja"
+            return -1
         else:
             return User.DB.insert(self.__dict__)
 
